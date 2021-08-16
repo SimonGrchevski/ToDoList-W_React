@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoItem from './TodoItem';
 
 export default class TodoList extends Component {
 
@@ -8,7 +9,7 @@ export default class TodoList extends Component {
       <React.Fragment>
         <ul>
           {toDos.map(todo => (
-            <li key={todo.id}>{todo.title}</li>
+            <TodoItem key={todo.key} title={todo.title}/>
           ))}
         </ul>
       </React.Fragment>

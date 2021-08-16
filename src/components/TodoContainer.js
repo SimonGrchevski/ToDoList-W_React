@@ -1,5 +1,6 @@
 import React from "react"
 import TodoList from './TodoList';
+import Header from './Header';
 
 export default class TodoContainer extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ export default class TodoContainer extends React.Component {
     const { todos }  = this.state;
     return (
       <React.Fragment>
+        <Header />
         <TodoList toDos={todos}/>
       </React.Fragment>
     )
