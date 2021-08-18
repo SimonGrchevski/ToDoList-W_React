@@ -13,7 +13,8 @@ export default class TodoList extends Component {
               id={todo.id}
               title={todo.title} 
               completed ={todo.completed}
-              handleChange={this.props.handleChange}/>
+              handleChange={this.props.handleChange}
+              handleDelete={this.props.handleDelete}/>
           ))}
         </ul>
       </React.Fragment>

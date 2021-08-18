@@ -27,14 +27,29 @@ export default class TodoContainer extends React.Component {
   }
 
   handleChange = id => {
-    this.setState({
-      todos: this.state.todos.filter(todo => {
-        if(todo.id === id)
-          todo.completed = !todo.completed;
-        return todo;
-      })
-    });
+    this.setState(prevState => ({
+      todos: prevState.todos.map(todo => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          }
+        }
+        return todo
+      }),
+    }))
   }
+
+  handleDelete = id => {
+    this.setState({
+      todos: [
+        ...this.state.todos.filter(todo => {
+          return todo.id !== id;
+        })
+      ]
+    })
+  }
+  
   render() {
     const { todos }  = this.state;
     return (
@@ -42,7 +57,8 @@ export default class TodoContainer extends React.Component {
         <Header />
         <TodoList
           toDos={todos}
-          handleChange={this.handleChange}/>
+          handleChange={this.handleChange}
+          handleDelete={this.handleDelete}/>
       </React.Fragment>
     )
   }

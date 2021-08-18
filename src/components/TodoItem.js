@@ -8,6 +8,7 @@ const TodoItem = (props) => {
         <input type="checkbox" 
           checked={props.completed}
           onChange={() => props.handleChange(props.id)}/>
+        <button onClick={() => props.handleDelete(props.id)}>Delete</button>
       {props.title}
       </li>
     </React.Fragment>
