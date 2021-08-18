@@ -6,8 +6,8 @@ const TodoItem = (props) => {
     <React.Fragment>
       <li>
         <input type="checkbox" 
-        checked={props.completed}
-        onChange ={() => console.log("Clicked")}/>
+          checked={props.completed}
+          onChange={() => props.handleChange(props.id)}/>
       {props.title}
       </li>
     </React.Fragment>

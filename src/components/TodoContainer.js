@@ -25,12 +25,24 @@ export default class TodoContainer extends React.Component {
       ]
     };
   }
+
+  handleChange = id => {
+    this.setState({
+      todos: this.state.todos.filter(todo => {
+        if(todo.id === id)
+          todo.completed = !todo.completed;
+        return todo;
+      })
+    });
+  }
   render() {
     const { todos }  = this.state;
     return (
       <React.Fragment>
         <Header />
-        <TodoList toDos={todos}/>
+        <TodoList
+          toDos={todos}
+          handleChange={this.handleChange}/>
       </React.Fragment>
     )
   }
