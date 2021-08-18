@@ -9,7 +9,7 @@ export default class TodoList extends Component {
       <React.Fragment>
         <ul>
           {toDos.map(todo => (
-            <TodoItem key={todo.key} title={todo.title}/>
+            <TodoItem key={todo.id} title={todo.title} completed ={todo.completed}/>
           ))}
         </ul>
       </React.Fragment>

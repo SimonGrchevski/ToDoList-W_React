@@ -4,7 +4,12 @@ const TodoItem = (props) => {
 
   return  ( 
     <React.Fragment>
-      <li key={props.key}>{props.title}</li>
+      <li>
+        <input type="checkbox" 
+        checked={props.completed}
+        onChange ={() => console.log("Clicked")}/>
+      {props.title}
+      </li>
     </React.Fragment>
   )
 }
