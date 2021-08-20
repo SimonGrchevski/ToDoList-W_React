@@ -4,20 +4,21 @@ import TodoItem from './TodoItem';
 export default class TodoList extends Component {
   render() {
     const { toDos } = this.props;
-    return ( 
-      <React.Fragment>
+    return (
+      <>
         <ul>
-          {toDos.map(todo => (
-            <TodoItem 
+          {toDos.map((todo) => (
+            <TodoItem
               key={todo.id}
               id={todo.id}
-              title={todo.title} 
-              completed ={todo.completed}
+              title={todo.title}
+              completed={todo.completed}
               handleChange={this.props.handleChange}
-              handleDelete={this.props.handleDelete}/>
+              handleDelete={this.props.handleDelete}
+            />
           ))}
         </ul>
-      </React.Fragment>
+      </>
     );
   }
 }
