@@ -12,10 +12,17 @@ export default class InputTodo extends React.Component {
 
   handleSubmit = (e) =>{
     e.preventDefault();
-    this.props.addTodoProps(this.state.title);
-    this.setState({
-      title: '',
-    })
+    const newTitle = this.state.title;
+    if( newTitle.trim() )
+    {
+      this.props.addTodoProps(newTitle);
+      this.setState({
+        title: '',
+      })
+    }
+    else 
+      alert("Incorrect title");
+    
   }
   render () {
     return (
