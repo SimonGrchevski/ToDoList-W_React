@@ -1,8 +1,12 @@
+import PropsType from 'prop-types';
 import React from 'react';
 
 export default class InputTodo extends React.Component {
-  state = {
-    title: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+    };
   }
 
   onChange = (e) => {
@@ -13,27 +17,34 @@ export default class InputTodo extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const newTitle = this.state.title;
+    const { newTitle } = this.state;
+    const { addTodoProps } = this.props;
     if (newTitle.trim()) {
-      this.props.addTodoProps(newTitle);
+      addTodoProps(newTitle);
       this.setState({
         title: '',
       });
+      // eslint-disable-next-line
     } else { alert('Incorrect title'); }
   }
 
   render() {
+    const { title } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="Add todo.."
-          value={this.state.title}
+          value={title}
           onChange={this.onChange}
           name="title"
         />
-        <button>Submit</button>
+        <button type="button">Submit</button>
       </form>
     );
   }
 }
+
+InputTodo.propTypes = {
+  addTodoProps: PropsType.func.isRequired,
+};

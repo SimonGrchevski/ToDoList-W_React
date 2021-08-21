@@ -43,21 +43,21 @@ export default class TodoContainer extends React.Component {
   }
 
   handleDelete = (id) => {
-    this.setState({
-      todos: [
-        ...this.state.todos.filter((todo) => todo.id !== id),
-      ],
-    });
+    this.setState((prevState) => (
+      [
+        ...prevState.todos.filter((todo) => todo.id !== id),
+      ]));
   }
 
   addTodoItem = (title) => {
+    const [todos] = this.state;
     const newToDo = {
       id: uuidv4(),
       title,
       completed: false,
     };
     this.setState({
-      todos: this.state.todos.concat(newToDo),
+      todos: todos.concat(newToDo),
     });
   }
 
